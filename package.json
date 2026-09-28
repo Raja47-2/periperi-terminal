@@ -18,7 +18,8 @@
     "media/icon.svg",
     "README.md",
     "LICENSE"
-  ],  "repository": {
+  ],
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/Raja47-2/periperi-terminal.git"
   },
