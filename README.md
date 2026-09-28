@@ -1,4 +1,15 @@
-# PARI PARI Terminal
+# periperi
+
+**ECDAT cryptographic discovery and assessment tool.**
+
+This repository holds the PARI PARI product, in two parts:
+
+| Component | What it is |
+| --- | --- |
+| **ECDAT service** | A FastAPI backend that scans repositories, ZIP/TAR archives, container images, binaries and cryptographic artifacts. It finds algorithms, keys, certificates, library and HSM references, scores classical and quantum risk, recommends safer or post-quantum alternatives, and exports a JSON CBOM. |
+| **PARI PARI Terminal** *(this directory)* | The `periperi` CLI and the VS Code extension, sharing one local scanner core. |
+
+## PARI PARI Terminal
 
 Enterprise cryptographic discovery from the terminal or from VS Code.
 
