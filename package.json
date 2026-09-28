@@ -282,7 +282,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,js,mjs,json,md}\"",
     "vscode:prepublish": "npm run compile",
-    "package": "npm run compile && vsce package --out peri-pari-terminal-0.1.0.vsix",
+    "package": "npm run compile && vsce package --out pari-pari-terminal-0.1.0.vsix",
     "prepublishOnly": "npm run build && npm run typecheck && npm test"
   },
   "devDependencies": {
