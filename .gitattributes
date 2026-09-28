@@ -1,0 +1,14 @@
+# Normalise line endings so the same commit does not show whole-file diffs
+# depending on whether it was checked out on Windows, macOS or Linux.
+* text=auto eol=lf
+
+*.png binary
+*.vsix binary
+*.tgz binary
+
+# Keep LF in the files Node and esbuild read.
+*.js   text eol=lf
+*.mjs  text eol=lf
+*.ts   text eol=lf
+*.json text eol=lf
+*.md   text eol=lf

@@ -1,0 +1,300 @@
+{
+  "name": "pari-pari-terminal",
+  "displayName": "PARI PARI Terminal",
+  "description": "Cryptographic discovery and security analysis from the terminal or VS Code. Scan for cryptographic assets, generate a CBOM, and gate CI.",
+  "version": "0.1.0",
+  "publisher": "rajadandasena04",
+  "author": "Raja Dandasena",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "bin": {
+    "periperi": "./dist/cli/periperi.js"
+  },
+  "main": "./dist/extension.js",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.js.map",
+    "media/icon.png",
+    "media/icon.svg",
+    "README.md",
+    "LICENSE"
+  ],  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raja47-2/periperi-terminal.git"
+  },
+  "homepage": "https://github.com/Raja47-2/periperi-terminal#readme",
+  "bugs": {
+    "url": "https://github.com/Raja47-2/periperi-terminal/issues"
+  },
+  "engines": {
+    "vscode": "^1.90.0",
+    "node": ">=20"
+  },
+  "categories": [
+    "Linters",
+    "Other",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "cli",
+    "sarif",
+    "cbom",
+    "cryptography",
+    "cybersecurity",
+    "post-quantum",
+    "pqc",
+    "security",
+    "crypto",
+    "devsecops",
+    "terminal"
+  ],
+  "galleryBanner": {
+    "color": "#0B0B0D",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "capabilities": {
+    "virtualWorkspaces": false,
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Scanning runs locally, but writing results into the workspace and remote synchronisation are disabled in untrusted workspaces."
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "pariPari.scanWorkspace",
+        "title": "Scan Workspace",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.scanFile",
+        "title": "Scan Current File",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.scanFolder",
+        "title": "Scan Current Folder",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.generateCbom",
+        "title": "Generate CBOM",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.showResults",
+        "title": "Show Scan Results",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.showDashboard",
+        "title": "Show Security Dashboard",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.exportCbom",
+        "title": "Export CBOM",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.clearResults",
+        "title": "Clear Scan Results",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.status",
+        "title": "Check Status",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.connectEcdat",
+        "title": "Connect to ECDAT",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.syncScan",
+        "title": "Sync Scan",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.cancelScan",
+        "title": "Cancel Scan",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.openTerminal",
+        "title": "Open PARI PARI Terminal",
+        "category": "PARI PARI"
+      },
+      {
+        "command": "pariPari.revealAsset",
+        "title": "Reveal Cryptographic Asset",
+        "category": "PARI PARI"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "pariPari",
+          "title": "PARI PARI",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "pariPari": [
+        {
+          "id": "pariPari.results",
+          "name": "Scan Results",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "pariPari.revealAsset",
+          "when": "false"
+        },
+        {
+          "command": "pariPari.openTerminal",
+          "when": "false"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "pariPari.scanFile",
+          "group": "pariPari@1",
+          "when": "explorerResourceIsFile"
+        },
+        {
+          "command": "pariPari.scanFolder",
+          "group": "pariPari@2",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "pariPari.scanWorkspace",
+          "when": "view == pariPari.results",
+          "group": "navigation@1"
+        },
+        {
+          "command": "pariPari.showDashboard",
+          "when": "view == pariPari.results",
+          "group": "navigation@2"
+        },
+        {
+          "command": "pariPari.generateCbom",
+          "when": "view == pariPari.results",
+          "group": "navigation@3"
+        },
+        {
+          "command": "pariPari.clearResults",
+          "when": "view == pariPari.results",
+          "group": "navigation@4"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "pariPari.revealAsset",
+          "when": "view == pariPari.results && viewItem == pariPariAsset",
+          "group": "inline@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "PARI PARI Terminal",
+      "properties": {
+        "pariPari.serverUrl": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Optional PARI PARI ECDAT server URL. Leave empty to stay fully local. Nothing is uploaded unless you explicitly run **PARI PARI: Sync Scan** or `periperi sync`."
+        },
+        "pariPari.apiKey": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Optional API key/token for the PARI PARI ECDAT server. Stored in your VS Code settings or secret storage only. Never written to logs or to the workspace. The `periperi` CLI reads it from the `PERIPERI_API_KEY` environment variable."
+        },
+        "pariPari.projectId": {
+          "type": "string",
+          "default": "",
+          "description": "Optional project identifier used when synchronising with PARI PARI ECDAT."
+        },
+        "pariPari.scan.exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "node_modules",
+            ".git",
+            "dist",
+            "build",
+            ".venv",
+            ".pari-pari"
+          ],
+          "description": "Directory and file names excluded from scanning."
+        },
+        "pariPari.maxFileSize": {
+          "type": "number",
+          "default": 1048576,
+          "minimum": 1024,
+          "description": "Maximum file size (bytes) read by the scanner. Larger files are skipped."
+        },
+        "pariPari.maxFiles": {
+          "type": "number",
+          "default": 20000,
+          "minimum": 1,
+          "description": "Maximum number of files included in a single scan."
+        },
+        "pariPari.enableTelemetry": {
+          "type": "boolean",
+          "default": false,
+          "description": "Opt-in anonymous usage counters. Disabled by default. No source code, file names or identifiers are ever sent."
+        },
+        "pariPari.openDashboardAfterScan": {
+          "type": "boolean",
+          "default": false,
+          "description": "Open the PARI PARI security dashboard automatically when a scan finishes."
+        },
+        "pariPari.writeResultsToWorkspace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Store scan results and CBOMs inside the workspace .pari-pari/ directory. Disable to keep everything in extension storage only."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "gen:icon": "node scripts/generate-icon.mjs",
+    "typecheck": "tsc -p ./ --noEmit",
+    "build": "node esbuild.js --production",
+    "build:dev": "node esbuild.js",
+    "compile": "node esbuild.js && npm run typecheck",
+    "watch": "node esbuild.js --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{ts,js,mjs,json,md}\"",
+    "vscode:prepublish": "npm run compile",
+    "package": "npm run compile && vsce package --out peri-pari-terminal-0.1.0.vsix",
+    "prepublishOnly": "npm run build && npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@types/node": "^22.10.2",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.16.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0",
+    "vitest": "^2.1.8"
+  }
+}

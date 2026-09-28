@@ -1,0 +1,12 @@
+node_modules/
+dist/
+out/
+*.vsix
+*.tgz
+.vscode-test/
+coverage/
+.pari-pari/
+.periperirc
+.pari-parirc
+*.log
+.DS_Store
